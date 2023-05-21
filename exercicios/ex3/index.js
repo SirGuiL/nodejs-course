@@ -1,8 +1,7 @@
+const path = require("path");
 const express = require("express");
 const app = express();
-const port = 3000;
-
-const path = require("path");
+const port = 5000;
 
 const users = require('./users');
 
@@ -23,10 +22,6 @@ app.use('/users', users);
 app.get("/", (req, res) => {
   res.sendFile(`${basePath}/index.html`);
 });
-
-app.use((req, res, next) => {
-  res.status(404).sendFile(`${basePath}/notfound.html`);
-})
 
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
