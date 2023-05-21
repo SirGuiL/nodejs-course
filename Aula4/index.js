@@ -11,6 +11,9 @@ app.use(express.urlencoded({
   extended: true,
 }));
 
+// static files
+app.use(express.static('public'));
+
 app.use(express.json());
 
 const basePath = path.join(__dirname, "templates");
