@@ -16,9 +16,11 @@ app.get("/", (req, res) => {
     lastname: "Lima",
   };
 
-  const auth = false;
+  const auth = true;
 
-  res.render("home", { user, auth });
+  const approved = false;
+
+  res.render("home", { user, auth, approved });
 });
 
 app.listen(3000, () => {
