@@ -1,1 +1,4 @@
 <h1>Olá {{user.name}} {{user.lastname}}</h1>
+{{#if auth}}
+<p>Você está autenticado, <a href="/dashboard">clique aqui</a> para acessar a área de membros!</p>
+{{/if}}

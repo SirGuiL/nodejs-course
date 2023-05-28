@@ -6,12 +6,19 @@ const app = express();
 app.engine("handlebars", exphbs.engine());
 app.set("view engine", "handlebars");
 
+app.get("/dashboard", (req, res) => {
+  res.render("dashboard");
+});
+
 app.get("/", (req, res) => {
   const user = {
     name: "Guilherme",
     lastname: "Lima",
   };
-  res.render("home", { user });
+
+  const auth = false;
+
+  res.render("home", { user, auth });
 });
 
 app.listen(3000, () => {
