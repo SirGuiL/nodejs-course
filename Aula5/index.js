@@ -10,6 +10,8 @@ const hbs = exphbs.create({
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
+app.use(express.static("public"));
+
 app.get("/dashboard", (req, res) => {
   const items = ["item 1", "item 2", "item 3"];
   res.render("dashboard", { items });
@@ -33,17 +35,19 @@ app.get("/blog", (req, res) => {
       category: "JavaScript",
       body: "This article helps you learn NodeJS",
       comments: 4,
-    }, {
+    },
+    {
       title: "Learn Vue",
       category: "JavaScript",
       body: "This article helps you learn Vue",
       comments: 3,
-    }, {
+    },
+    {
       title: "Learn React",
       category: "JavaScript",
       body: "This article helps you learn React",
       comments: 7,
-    }
+    },
   ];
 
   res.render("blog", { posts });
