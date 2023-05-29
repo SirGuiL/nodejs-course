@@ -3,7 +3,11 @@ const exphbs = require("express-handlebars");
 
 const app = express();
 
-app.engine("handlebars", exphbs.engine());
+const hbs = exphbs.create({
+  partialsDir: ["views/partials"],
+});
+
+app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
 app.get("/dashboard", (req, res) => {
@@ -20,6 +24,29 @@ app.get("/post", (req, res) => {
   };
 
   res.render("blogpost", { post });
+});
+
+app.get("/blog", (req, res) => {
+  const posts = [
+    {
+      title: "Learn NodeJS",
+      category: "JavaScript",
+      body: "This article helps you learn NodeJS",
+      comments: 4,
+    }, {
+      title: "Learn Vue",
+      category: "JavaScript",
+      body: "This article helps you learn Vue",
+      comments: 3,
+    }, {
+      title: "Learn React",
+      category: "JavaScript",
+      body: "This article helps you learn React",
+      comments: 7,
+    }
+  ];
+
+  res.render("blog", { posts });
 });
 
 app.get("/", (req, res) => {
